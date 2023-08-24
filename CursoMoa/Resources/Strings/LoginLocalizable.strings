@@ -1,0 +1,16 @@
+/* 
+  LoginLocalizable.strings
+  CursoMoa
+
+  Created by Weslley Milani on 22/08/23.
+  
+*/
+
+"email" = "Email";
+"password" = "Senha";
+"buttonOpen" = "Entrar";
+"buttonRegister" = "Registrar";
+"emailPlaceHolder" = "Endereço de email para logar";
+"passwordPlaceHolder" = "Digite a senha";
+
+
