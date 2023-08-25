@@ -18,7 +18,7 @@ class LoginView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = LocalizableString.email.localize()
-        label.textColor = .black
+        label.textColor = .labelTextColor
         label.textAlignment = .left
         
         return label
@@ -42,7 +42,7 @@ class LoginView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = LocalizableString.password.localize()
-        label.textColor = .black
+        label.textColor = .labelTextColor
         label.textAlignment = .left
         
     
@@ -64,26 +64,9 @@ class LoginView: UIView {
         
     }()
     
-    lazy var buttonOpen: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(LocalizableString.buttonOpen.localize(), for: .normal)
-        button.backgroundColor = .purple
-        button.setTitleColor(UIColor.white, for: .normal)
-        
-        
-        return button
-    }()
+        var buttonOpen = ButtonDefault(title:LocalizableString.buttonOpen.localize())
+        var buttonRegister = ButtonDefault(title: LocalizableString.buttonRegister.localize())
     
-    lazy var buttonRegister: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(LocalizableString.buttonRegister.localize(), for: .normal)
-        button.backgroundColor = .purple
-        button.setTitleColor(UIColor.white, for: .normal)
-        
-       return button
-    }()
     
     
     //MARK: - Inits
@@ -91,7 +74,7 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .viewBackground
         
         setupVisualElements()
     }

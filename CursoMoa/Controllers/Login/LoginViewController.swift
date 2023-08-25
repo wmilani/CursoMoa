@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-        var mainView = LoginView()
+        lazy var mainView = LoginView()
     
     override func loadView() {
         self.view = mainView
