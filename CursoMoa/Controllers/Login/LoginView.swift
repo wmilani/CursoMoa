@@ -10,64 +10,17 @@ import UIKit
 
 class LoginView: UIView {
     
-    
-    
-    //MARK: - Visual Elements
-    
-    lazy var emailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = LocalizableString.email.localize()
-        label.textColor = .labelTextColor
-        label.textAlignment = .left
+    //MARK: - Properts
+    lazy var emailField = LabelTextDefault(labelText: LocalizableString.email.localize(),
+                                           placeholder: LocalizableString.emailPlaceHolder.localize(),
+                                           font: UIFont.systemFont(ofSize: 14),
+                                           keyboardType: .emailAddress,
+                                           returnKeyType: .next)
+
+    lazy var passwordField = LabelTextDefault(labelText: LocalizableString.password.localize(), placeholder:                                          LocalizableString.passwordPlaceHolder.localize())
         
-        return label
-    }()
-    
-    lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = LocalizableString.emailPlaceHolder.localize()
-        textField.keyboardType = UIKeyboardType.emailAddress
-        textField.returnKeyType = UIReturnKeyType.next
-        textField.font = UIFont.systemFont(ofSize: 13)
-        textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-            
-       
-        return textField
-    }()
-    
-    lazy var passwordLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = LocalizableString.password.localize()
-        label.textColor = .labelTextColor
-        label.textAlignment = .left
-        
-    
-      return label
-    }()
-    
-    lazy var passwordTexTField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = LocalizableString.passwordPlaceHolder.localize()
-        textField.isSecureTextEntry = true
-        textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.done
-        textField.font = UIFont.systemFont(ofSize: 13)
-        textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-        
-        return textField
-        
-    }()
-    
-        var buttonOpen = ButtonDefault(title:LocalizableString.buttonOpen.localize())
-        var buttonRegister = ButtonDefault(title: LocalizableString.buttonRegister.localize())
-    
-    
+        let buttonOpen = ButtonDefault(title:LocalizableString.buttonOpen.localize())
+        let buttonRegister = ButtonDefault(title: LocalizableString.buttonRegister.localize())
     
     //MARK: - Inits
     
@@ -84,90 +37,49 @@ class LoginView: UIView {
     }
     
     private func setupVisualElements() {
-        setUpLabelEmail()
-        setUpTextFieldEmail()
-        setUpPasswordLabel()
-        setUpPasswordTextField()
+        setUpFieldEmail()
+        setUpFieldPassword()
         setUpButtonOpen()
         setUpButtonRegister()
-        
     }
-    
-    private func setUpLabelEmail() {
-        self.addSubview(emailLabel)
+
+    private func setUpFieldEmail(){
+        self.addSubview(emailField)
         
         NSLayoutConstraint.activate([
-            emailLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
-            emailLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-            emailLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-            
-        
+            emailField.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
+            emailField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
+            emailField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12)
         ])
     }
     
-    private func setUpTextFieldEmail() {
-        self.addSubview(emailTextField)
+    private func setUpFieldPassword(){
+        self.addSubview(passwordField)
         
         NSLayoutConstraint.activate([
-        
-            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 12),
-            emailTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-            emailTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-            
-    
+            passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 20),
+            passwordField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
+            passwordField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12)
         ])
     }
-    
-    private func setUpPasswordLabel(){
-        self.addSubview(passwordLabel)
         
-        NSLayoutConstraint.activate([
-        
-            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-            passwordLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12)
-        
-        ])
-        
-    }
-    
-    private func setUpPasswordTextField(){
-        self.addSubview(passwordTexTField)
-        
-        NSLayoutConstraint.activate([
-        
-            passwordTexTField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 12),
-            passwordTexTField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-            passwordTexTField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-        
-        ])
-        
-    }
-    
     private func setUpButtonOpen(){
         self.addSubview(buttonOpen)
         
         NSLayoutConstraint.activate([
-            
-            buttonOpen.topAnchor.constraint(equalTo: passwordTexTField.bottomAnchor, constant: 30),
+            buttonOpen.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
             buttonOpen.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
             buttonOpen.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12)
-        
         ])
-        
     }
     
     private func setUpButtonRegister(){
         self.addSubview(buttonRegister)
         
         NSLayoutConstraint.activate([
-        
             buttonRegister.topAnchor.constraint(equalTo: buttonOpen.bottomAnchor, constant: 30),
             buttonRegister.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
             buttonRegister.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-            
-            
         ])
     }
-    
 }
